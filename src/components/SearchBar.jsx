@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import searchIcon from '../assets/search-icon.svg';
 import globalToken from '../tokens/global.json';
@@ -19,15 +19,19 @@ const SearchBarWrapper = styled.form`
 
 export default function SearchBar() {
   const navigate = useNavigate();
+  const { keyword } = useParams();
   const [form, onChange, reset] = useInput({
     searchValue: ''
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    reset();
     navigate(`/videos/${form.searchValue}`);
   };
+
+  useEffect(() => {
+    reset({ searchValue: keyword });
+  }, [keyword]);
 
   return (
     <SearchBarWrapper onSubmit={handleSubmit}>
