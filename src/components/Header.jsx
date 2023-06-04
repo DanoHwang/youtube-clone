@@ -7,10 +7,15 @@ import Button from '../common/atoms/Button';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 
-const { Heading, White, iconSize } = globalToken;
+const { Heading, White, Gray, iconSize } = globalToken;
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid ${Gray[800].value};
 `;
 
 const LogoWrapper = styled.div`
@@ -25,6 +30,14 @@ const Text = styled.div`
   font-weight: bold;
 `;
 
+const SearchBarWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${100 * 7 / 12}%;
+  flex-grow: 1;
+`;
+
 export default function Header() {
   return (
     <Container>
@@ -34,7 +47,9 @@ export default function Header() {
           <Text>Youtube</Text>
         </LogoWrapper>
       </Link>
-      <SearchBar />
+      <SearchBarWrapper>
+        <SearchBar />
+      </SearchBarWrapper>
     </Container>
   );
 }

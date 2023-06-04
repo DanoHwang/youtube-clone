@@ -8,8 +8,8 @@ function useInput(initialForm) {
     setForm({ ...form, [name]: value });
   };
 
-  const reset = (keyword) => {
-    setForm(keyword || initialForm);
+  const reset = (keyword = initialForm) => {
+    setForm(keyword);
   };
 
   return [form, onChange, reset];

@@ -10,10 +10,10 @@ import Input from '../common/Input';
 
 const { Gray, iconSize } = globalToken;
 
-const SearchBarWrapper = styled.form`
+const Wrapper = styled.form`
   display: flex;
   justify-content: center;
-  width: 700px;
+  width: ${100 * 7 / 12}%;
   height: 2.5rem;
 `;
 
@@ -30,11 +30,12 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    reset({ searchValue: keyword });
+    const text = keyword || '';
+    reset({ ...form, searchValue: text });
   }, [keyword]);
 
   return (
-    <SearchBarWrapper onSubmit={handleSubmit}>
+    <Wrapper onSubmit={handleSubmit}>
       <Input
         form={form}
         name='searchValue'
@@ -47,6 +48,6 @@ export default function SearchBar() {
         size={iconSize.small.value}
         backgroundColor={Gray[700].value}
       />
-    </SearchBarWrapper>
+    </Wrapper>
   );
 }
