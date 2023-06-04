@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Image = styled.img.attrs(props => ({
-  src: `${props.name}`,
+  src: `${props.src}`,
   alt: ''
 }))`
   width: ${({ size }) => size}px;
@@ -9,11 +9,11 @@ const Image = styled.img.attrs(props => ({
   color: ${({ color }) => color};
 `;
 
-export const Icon = ({ size, name, color, ...rest }) => {
+export default function Icon({ size, src, color, ...rest }) {
   return (
     <Image
       size={size}
-      name={name}
+      src={src}
       color={color}
       { ...rest }
     />

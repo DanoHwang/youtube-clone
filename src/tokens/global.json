@@ -224,5 +224,19 @@
       "value": "solid",
       "type": "strokeStyle"
     }
+  },
+  "iconSize": {
+    "small": {
+      "value": 20,
+      "type": "size"
+    },
+    "medium": {
+      "value": 30,
+      "type": "size"
+    },
+    "large": {
+      "value": 40,
+      "type": "size"
+    }
   }
 }

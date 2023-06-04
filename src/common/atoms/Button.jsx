@@ -1,28 +1,26 @@
 import styled from 'styled-components';
-import globalToken from '../../tokens/global.json';
-import { Icon } from './Icon';
 
-const { borderRadius } = globalToken;
+import Icon from './Icon';
 
 const ButtonContainer = styled.button`
-  border: none;
-  outline: none;
-  background-color: transparent;
   display: flex;
   align-items: center;
+  border: none;
+  border-radius: ${({border}) => border}px;
+  outline: none;
+  background-color: ${({backgroundColor}) => backgroundColor || 'transparent'};
   cursor: pointer;
-  border-radius: ${borderRadius[8].value}px;
 `;
 
 const LabelText = styled.div`
   font-size: ${({ textSize }) => textSize}px;
 `;
 
-export const Button = ({ label = '', icon, textSize, ...rest }) => {
+export default function Button({ handleOnClick, icon, size, label, textSize, ...rest }) {
   return (
-    <ButtonContainer {...rest}>
-      {icon && <Icon icon={icon} />}
-      <LabelText children={label} textSize={textSize} />
+    <ButtonContainer onClick={handleOnClick} size={size} {...rest}>
+      {icon && <Icon src={icon} size={size} />}
+      {label && <LabelText children={label} textSize={textSize} />}
     </ButtonContainer>
   );
 };
