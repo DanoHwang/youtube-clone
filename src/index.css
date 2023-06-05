@@ -31,6 +31,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	line-height: 1;
+	color: white;
 	background-color: rgb(24 24 27);;
 }
 ol, ul {
@@ -54,4 +55,5 @@ input:focus {
 #root {
 	width: 100%;
 	max-width: 1536px;
+	box-sizing: border-box;
 }
