@@ -35,7 +35,7 @@ const PublisherThumbnail = styled(Icon)`
   border-radius: 50%;
 `;
 
-const Description = styled.p`
+const Description = styled.pre`
   font-size: 15px;
 `;
 
@@ -45,7 +45,7 @@ export default function VideoDetail() {
 
   const { youtube } = useYoutubeApi();
   const { isLoading, error, data: channel } = useQuery(
-    ['videos', video.snippet.channelId],
+    ['channel', video.snippet.channelId],
     () => youtube.getChannel(video.snippet.channelId),
     { staleTime: 1000 * 60 * 5 }
   );

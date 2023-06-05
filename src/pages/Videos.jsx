@@ -40,7 +40,7 @@ export default function Videos() {
   const { isLoading, error, data: videos } = useQuery(
     ['videos', keyword],
     () =>  youtube.search(keyword),
-    { staleTime: 1000 * 60 * 5 }
+    { staleTime: 1000 * 60 * 1 }
   );
 
   return (
