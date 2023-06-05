@@ -7,6 +7,10 @@ export default class FakeYoutube {
     return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
   }
 
+  async getChannel() {
+    return this.#channel();
+  }
+
   async #searchByKeyword() {
     return axios
       .get('/videos/search.json')
@@ -17,6 +21,12 @@ export default class FakeYoutube {
   async #mostPopular() {
     return axios
       .get('/videos/popular.json')
+      .then(res => res.data.items);
+  }
+
+  async #channel() {
+    return axios
+      .get('/videos/channel.json')
       .then(res => res.data.items);
   }
 }

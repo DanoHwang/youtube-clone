@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import globalToken from '../tokens/global.json';
 
@@ -21,8 +22,16 @@ const Description = styled.p`
 `;
 
 export default function VideoCard({ video }) {
+  const navigate = useNavigate();
+
+  const handleVideoClick = () => {
+    navigate(`/videos/watch/${video.id}`, {
+      state: { videoData: video }
+    });
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={handleVideoClick}>
       <img src={video.snippet.thumbnails.medium.url} alt='' />
       <Title>{video.snippet.title}</Title>
       <Description>{video.snippet.channelTitle}</Description>
